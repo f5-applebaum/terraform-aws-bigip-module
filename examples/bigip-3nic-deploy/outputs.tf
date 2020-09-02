@@ -14,29 +14,24 @@ output "bigip_mgmt_port" {
   value = module.bigip.mgmt_port
 }
 
+# BIG-IP Username
+output bigip_username {
+  value = module.bigip.f5_username
+}
+
+# BIG-IP Password
+output "password" {
+  value = module.bigip.bigip_password
+}
+
+/*
 # BIG-IP Password Secret name
 output "aws_secretmanager_secret_name" {
   value = aws_secretsmanager_secret.bigip.name
 }
 
-// # BIG-IP Password Secret name
-// output "tls_rsa_private_key" {
-//   value = tls_private_key.example.private_key_pem
-// }
-
-output bigip_username {
-  value = module.bigip.f5_username
+# BIG-IP Password Secret name
+output "tls_rsa_private_key" {
+  value = tls_private_key.example.private_key_pem
 }
-
-output bigip_password {
-  value = module.bigip.bigip_password
-}
-
-output bigip_onboard_do {
-  value = module.bigip.onboard_do
-}
-
-output selfip_list {
-  value = module.bigip.selfip_list
-}
-
+*/

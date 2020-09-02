@@ -181,7 +181,7 @@ module bigip {
     random_id.id.hex
   )
   ec2_key_name                = aws_key_pair.generated_key.key_name
-  aws_secretmanager_secret_id = aws_secretsmanager_secret.bigip.id
+#  aws_secretmanager_secret_id = aws_secretsmanager_secret.bigip.id
   mgmt_subnet_id              = [{ "subnet_id" = aws_subnet.mgmt.id, "public_ip" = true }]
   mgmt_securitygroup_id       = [module.mgmt-network-security-group.this_security_group_id]
   external_securitygroup_id   = [module.external-network-security-group-public.this_security_group_id]
@@ -190,6 +190,21 @@ module bigip {
   internal_subnet_id          = [{ "subnet_id" = aws_subnet.internal.id, "public_ip" = false }]
   //depends_on                  = [aws_secretsmanager_secret.bigip]
 }
+
+resource "null_resource" "clusterDO" {
+
+
+  provisioner "local-exec" {
+    command = "cat > DO_3nic-instance.json <<EOL\n ${module.bigip.onboard_do}\nEOL"
+  }
+  provisioner "local-exec" {
+    when    = destroy
+    command = "rm -rf DO_3nic-instance.json"
+  }
+  depends_on = [ module.bigip.onboard_do]
+}
+
+
 
 #
 # Variables used by this example
