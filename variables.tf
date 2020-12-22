@@ -55,8 +55,8 @@ variable aws_secretmanager_secret_id {
 variable mgmt_subnet_ids {
   description = "The subnet id of the virtual network where the virtual machines will reside."
   type = list(object({
-    subnet_id = string
-    public_ip = bool
+    subnet_id          = string
+    public_ip          = bool
     private_ip_primary = string
   }))
   default = [{ "subnet_id" = null, "public_ip" = null, "private_ip_primary" = null }]
@@ -65,9 +65,9 @@ variable mgmt_subnet_ids {
 variable external_subnet_ids {
   description = "The subnet id of the virtual network where the virtual machines will reside."
   type = list(object({
-    subnet_id = string
-    public_ip = bool
-    private_ip_primary = string
+    subnet_id            = string
+    public_ip            = bool
+    private_ip_primary   = string
     private_ip_secondary = string
   }))
   default = [{ "subnet_id" = null, "public_ip" = null, "private_ip_primary" = null, "private_ip_secondary" = null }]
@@ -76,8 +76,8 @@ variable external_subnet_ids {
 variable internal_subnet_ids {
   description = "The subnet id of the virtual network where the virtual machines will reside."
   type = list(object({
-    subnet_id = string
-    public_ip = bool
+    subnet_id          = string
+    public_ip          = bool
     private_ip_primary = string
   }))
   default = [{ "subnet_id" = null, "public_ip" = null, "private_ip_primary" = null }]
