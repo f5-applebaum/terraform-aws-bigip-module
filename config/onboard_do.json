@@ -29,7 +29,12 @@
             "class": "User",
             "userType": "regular",
             "password": "{{{ ADMIN_PASS }}}",
-            "shell": "bash"
+            "shell": "none",
+            "partitionAccess": {
+                "all-partitions": {
+                    "role": "admin"
+                }
+            }
         }
     }
 }
