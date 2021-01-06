@@ -24,6 +24,12 @@
             "userType": "regular",
             "password": "{{{ ADMIN_PASS }}}",
             "shell": "bash"
+        },
+        "{{{ USER_NAME }}}": {
+            "class": "User",
+            "userType": "regular",
+            "password": "{{{ ADMIN_PASS }}}",
+            "shell": "bash"
         }
     }
 }
